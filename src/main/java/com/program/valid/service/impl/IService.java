@@ -1,5 +1,7 @@
 package com.program.valid.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,31 @@ public class IService implements OrgService{
 	public int saveOrg(Organization organization) {
 		
 		return repo.save(organization).getOrgId() ;
+	}
+
+	@Override
+	public void deleteById(Integer id) {
+		
+		repo.deleteById(id);
+		
+	}
+
+	@Override
+	public int updateById(Organization organization) {
+		
+		return repo.save(organization).getOrgId();
+	}
+
+	@Override
+	public List<Organization> getAll() {
+		
+		return repo.findAll();
+	}
+
+	@Override
+	public Organization getById(Integer id) {
+		
+		return repo.findById(id).get();
 	}
 
 

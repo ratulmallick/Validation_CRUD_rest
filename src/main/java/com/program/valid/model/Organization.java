@@ -19,15 +19,14 @@ public class Organization {
 	@Column
 	private Integer orgId;
 	
-	@NotBlank(message ="Name musy be required")
+	@NotBlank(message ="Name musy be Required")
 	@Column
 	private String orgName;
 	
-	//@NotEmpty
 	@Column
 	private double orgColletion;
 	
-	@Email(message="Mail must be proper way and required")
+	@Email(message="Mail must be proper way and Required")
 	@Column
 	private String orgEmail;
 
