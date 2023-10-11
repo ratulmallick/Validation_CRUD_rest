@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -24,25 +25,25 @@ public class Organization {
 	private String orgName;
 	
 	@Column
-	private double orgColletion;
+	@Min(value = 100, message="Collection should be more than 100")
+	private double orgCollection;
 	
 	@Email(message="Mail must be proper way and Required")
 	@Column
 	private String orgEmail;
 
-	public Organization(Integer orgId, @NotBlank @Size(min = 2, message = "Name must be required") String orgName,
-			@NotBlank @Size(min = 1, message = "Collection must be required") double orgColletion,
-			@Email(message = "Mail must be required") String orgEmail) {
-		super();
-		this.orgId = orgId;
-		this.orgName = orgName;
-		this.orgColletion = orgColletion;
-		this.orgEmail = orgEmail;
-	}
-
 	public Organization() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public Organization(Integer orgId, @NotBlank(message = "Name musy be Required") String orgName,
+			double orgCollection, @Email(message = "Mail must be proper way and Required") String orgEmail) {
+		super();
+		this.orgId = orgId;
+		this.orgName = orgName;
+		this.orgCollection = orgCollection;
+		this.orgEmail = orgEmail;
 	}
 
 	public Integer getOrgId() {
@@ -61,12 +62,12 @@ public class Organization {
 		this.orgName = orgName;
 	}
 
-	public double getOrgColletion() {
-		return orgColletion;
+	public double getOrgCollection() {
+		return orgCollection;
 	}
 
-	public void setOrgColletion(double orgColletion) {
-		this.orgColletion = orgColletion;
+	public void setOrgCollection(double orgCollection) {
+		this.orgCollection = orgCollection;
 	}
 
 	public String getOrgEmail() {
@@ -79,10 +80,9 @@ public class Organization {
 
 	@Override
 	public String toString() {
-		return "Organization [orgId=" + orgId + ", orgName=" + orgName + ", orgColletion=" + orgColletion
+		return "Organization [orgId=" + orgId + ", orgName=" + orgName + ", orgCollection=" + orgCollection
 				+ ", orgEmail=" + orgEmail + "]";
 	}
-	
-	
 
+	
 }

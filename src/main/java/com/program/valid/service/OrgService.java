@@ -15,5 +15,7 @@ public interface OrgService {
 	public List<Organization> getAll();
 	
 	public Organization getById(Integer id);
+	
+	public List<Organization> getDataMoreThan300(Double dou);
 
 }

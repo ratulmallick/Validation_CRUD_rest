@@ -77,4 +77,11 @@ public class OrgController {
 		
 	}
 
+	@GetMapping("/more/{dou}")
+	public ResponseEntity<?> moreThan300(@PathVariable Double dou){
+		
+		service.getDataMoreThan300(dou);
+		
+		return new ResponseEntity<List<Organization>>(service.getDataMoreThan300(dou), HttpStatus.OK);
+	}
 }

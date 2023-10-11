@@ -46,6 +46,12 @@ public class IService implements OrgService{
 		return repo.findById(id).get();
 	}
 
+	@Override
+	public List<Organization> getDataMoreThan300(Double dou) {
+		
+		return repo.getDataMoreThan300(dou);
+	}
+
 
 
 	
